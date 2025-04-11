@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина товаров</title>
+</head>
+<body>
+    <!--
+        ondragstart - начало перетаскивания
+        ondrag - процесс перетаскивания
+        ondragenter - перетаскиваемый элемент наведён на элемент, который может его принять
+        ondragleave - перетаскиваемый элемент уведён с элемента, который может его принять
+        ondragover - перетаскивание элемента внутри элемента, который может его принять
+        ondrop - элемент опущен внутри элемента, который может его принять
+        ondropend - конец перетаскивания
+    -->
+    <div class="products">
+        <img id="img_1" src="C:\Users\user\Pictures\pnng.jpg" alt="Товар 1" data-price="100" data-name="Товар 1" draggable="true" ondragstart="dragStart (event)" />
+        <img id="img_2" src="C:\Users\user\Pictures\png.jpg" alt="Товар 2" data-price="300" data-name="Товар 2" draggable="true" ondragstart="dragStart (event)" />
+        <img id="img_3" src="C:\Users\user\Pictures\pn.jpg" alt="Товар 3" data-price="200" data-name="Товар 3" draggable="true" ondragstart="dragStart (event)" />       
+    </div>
+    <div ondrop="drop(event)" ondragover="dragOver(event)">
+        <h1>Корзина</h1>
+        <h2>Итоговая цена: <span id="totalPrice">0</span> руб.</h2> <!-- Здесь будет отображаться итоговая цена -->
+    </div>
+    <script type="text/javascript"> 
+        let totalPrice = 0; // Переменная для итоговой цены
+        function dragStart(event) {
+            event.dataTransfer.setData("text/plain", event.target.id);// Сохранение элемента
+        }
+        function dragOver(event) {
+            event.preventDefault (); // Отмена действия браузера по умолчанию
+        }
+        function drop (event) {
+           event.preventDefault ();
+            var img = event.dataTransfer.getData("text/plain") ; // Загрузка элемента
+            var new_img = document.getElementById(img).cloneNode(true);
+            var price = new_img.dataset.price; 
+            event.target.appendChild(new_img);
+            totalPrice += +price; 
+            document.getElementById("totalPrice").textContent = totalPrice; 
+   
+    // Уведомление о добавлении товара с указанием его имени и цены
+    alert('Товар добавлен в корзину! Название: ' + name + ', Цена: ' + price)
+       }
+    </script>
+</body>
+</html>
