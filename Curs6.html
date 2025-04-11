@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Определение местоположения пользователя на Яндекс.Картах</title>
+   <script>  type="text/javascript"></script>
+    <style>
+        html, body, #map {
+            width: 100%; height: 100%; padding: 0; margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div> <!-- Элемент для карты -->
+    
+    <script type="text/javascript">
+        // Функция для инициализации карты
+        function initMap(latitude, longitude) {
+            // Создаем карту
+            var myMap = new ymaps.Map("map", {
+                center: [latitude, longitude],
+                zoom: 15 
+            });
+
+            var myPlacemark = new ymaps.Placemark([latitude, longitude], {
+                balloonContent: 'Вы находитесь здесь!'
+            });
+
+            myMap.geoObjects.add(myPlacemark);
+        }
+
+        // Получаем текущее местоположение пользователя
+        navigator.geolocation.getCurrentPosition(success, error);
+
+        function success(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            initMap(latitude, longitude);
+        }
+
+        function error(e) {
+            switch (e.code) {
+                case e.PERMISSION_DENIED:
+                    alert("Вы запретили считывание информации о Вашем местоположении.");
+                    break;
+                case e.POSITION_UNAVAILABLE:
+                    alert("Браузер не смог определить ваше местоположение.");
+                    break;
+                case e.TIMEOUT:
+                    alert("Браузер не успел определить ваше местоположение.");
+                    break;
+                case e.UNKNOWN_ERROR:
+                    alert("Произошла неизвестная ошибка.");
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
