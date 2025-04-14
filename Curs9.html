@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Текст</title>
+    <style>
+        article {
+            width: 300px;
+            height: 40px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        article p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        section {
+            width: 300px;
+        }
+        section p {
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <p> Он необыкновенный чистюля и очень аккуратный.</p>
+    </article>
+    <section>
+        <p>Он ведёт наземный образ жизни. Это приземистый и неуклюжий зверь.Туловище толстое, а морда имеет тонкую вытянутую форму.</p>
+    </section>
+    <article class="article">Довольно широко в тайге распространён барсук.</article>
+    <article class="article">Барсук – всеядное млекопитающее семейства куньих.</article>
+    <article class="article">Он ведёт наземный образ жизни. Это приземистый и неуклюжий зверь.</article>
+    <article class="article">Туловище толстое, а морда имеет тонкую вытянутую форму.</article>
+    <article class="article">ЭтоТекстБезПробеловКоторыйНеВмещаетсяВ300ПикселейИБудетОбрезанСМноготочиемИЭтоДолжноБытьДостаточноДлиннымЧтобыПоказатьКакРаботаетОбрезка.</article>
+</body>
+</html>
