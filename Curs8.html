@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Селекторы</title>
+    <style>
+        ::selection {
+            color: hsl(253, 93%, 49%);
+        }
+        img[id^="h"] {
+            height: 430px;
+        }
+        img[src$=".png"] {
+            width: 500px;
+        }
+        li:first-child a {
+            font-size: 170%;
+            color: hsl(0, 90%, 51%);
+            border-right: 2px solid #000;
+        }
+        li:nth-child(2) a { 
+            font-size: 90%;
+            color: hwb(128 13% 11%);
+            border-right: 2px solid #000;
+        }
+        li:last-child a {
+            font-size: 150%;
+            color: hsl(0, 0%, 38%);
+            border-right: none;
+        } 
+        ul {
+            list-style-type: none;
+            padding: 0; 
+            display: flex;
+        }
+        a {
+            padding: 10px; 
+            border-right: 2px solid #000; 
+        }
+    </style>
+</head>
+<body>
+    <p>Привет</p>
+    <p>Здравствуй</p>
+    <p> Хеллоу</p>
+    <div>Вот это мир</div>
+    <div>Вот это красота</div>
+    <img src="C:\Users\user\Pictures\pwn.png" alt="" />
+    <img src="C:\Users\user\Pictures\pngwn.png" alt="" id="h50" />
+    <ul> 
+        <li>
+            <a href="#">Подписка</a>
+        </li>
+        <li>
+            <a href="#">Просмотр</a>
+        </li>
+        <li>
+            <a href="#">Комментарии</a>
+        </li>
+    </ul>
+</body>
+</html>
