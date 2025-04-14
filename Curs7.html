@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        canvas {
+            background-color: lab(93.61% -19.8 -2.13); /* Цвет фона Canvas */
+            border: 1px solid #0cda2e; /* Граница для Canvas */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="900" height="900"></canvas>
+    <script type="text/javascript">
+        var can = document.getElementById("canvas") .getContext ("2d") ;
+        var points = []; // Хранение для координат кликов
+        function drawTriangle () {
+            can.beginPath () ; // Для сложной фигуры
+            can.moveTo(20, 25) ;  // Перемещаемся к первой точке
+            can.lineTo(30, 105) ; // Рисуем линию ко второй точке
+            can.lineTo(105, 55) ; // Рисуем линию к третьей точке
+            can.closePath () ; // Закрываем путь (соединяем последнюю и первую точки)
+            can.stroke () ; // Рисуем контур фигуры
+        }
+
+        function drawRect () {
+            can.strokeStyle = "#f01";
+            can.fillStyle = "#fc0";
+            can.lineWidth = 10;
+            can.fillRect(200, 200, 150 ,150);
+            can.clearRect(200, 160, 40, 40);
+            can.strokeRect(150, 150, 50, 10);
+        }
+
+        function drawText () {
+            can.font = "20px Times New Roman";
+            can.fillText("Привет пользователь", 150, 70);
+        }
+        function handleClick(event) {
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            points.push({ x: x, y: y });
+
+            if (points.length > 1) {
+                // Если есть хотя бы две точки, рисуем линию
+                const lastPoint = points[points.length - 2];
+                can.beginPath();
+                can.moveTo(lastPoint.x, lastPoint.y);
+                can.lineTo(x, y);
+                can.stroke();
+            }
+        }
+        drawTriangle() ; // Вызываем функцию для рисования треугольника
+        drawRect ();
+        drawText ();
+        const canvas = document.getElementById("canvas");
+        canvas.addEventListener('click', handleClick);
+    </script>
+</body>
+</html>
