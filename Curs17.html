@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Эффект перехода(меню)</title>
+<style>
+    nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: lab(88.01% -83.33 77.56);
+    display: flex;
+    }
+    nav ul li {
+        position: relative;
+    }
+    nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+  }
+  nav ul li {
+    position: relative; 
+  }
+  nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap; 
+  }
+  nav ul li ul.submenu {
+    max-height: 0;     
+    overflow: hidden;     
+    width: 180px;
+    pointer-events:none; 
+  }
+
+  nav ul li:hover > ul.submenu {
+    max-height: 500px;  
+    pointer-events:auto;
+  }
+    #block {
+        background-color: aqua;
+        height: 400px;
+        transition: width 1s;
+        width: 500px;
+    }
+    #block:hover {
+        width: 800px;
+    }
+    input {
+        transition: color 2s, font-size 2s;
+    }
+    input:focus {
+        color: red;
+        font-size: 150%;
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Просмотр продукции</a></li>
+            <li>
+              <a href="#">Корзина товаров▼</a>
+              <ul class="submenu">
+                <li><a href="#">Арбуз</a></li>
+                <li><a href="#">Дыня</a></li>
+              </ul>
+            </li>
+            <li><a href="#">История</a></li>
+        </ul>
+     </nav>
+    <div id="block"></div>
+    <p>
+        <input type="text" name="name" />
+    </p>
+</body>
+</html>
