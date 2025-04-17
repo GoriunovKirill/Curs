@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Анимация цвета фона</title>
+<style>
+ #block {
+    height: 250px;
+    width: 400px;
+    background-color: red;
+    animation: colorChange 5s linear 2;
+  }
+  @keyframes colorChange {
+    0% {
+      background-color: red;
+    }
+    40% {
+      background-color: blue;
+    }
+    60% {
+      background-color: green;
+    }
+    100% {
+      background-color: red;
+    }
+  }
+</style>
+</head>
+<body>
+    <div id="block"></div>
+</body>
+</html>
